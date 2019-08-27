@@ -40,4 +40,18 @@ function addedAfter(daysAgo) {
     .finally(() => db.destroy());
 }
 
-addedAfter(5)
+// addedAfter(5)
+
+function pricePerCategory() {
+  db
+    .select('category')
+    .sum('price')
+    .from('shopping_list')
+    .groupBy('category')
+    .then(result => {
+      console.log(result);
+    })
+    .finally(() => db.destroy());
+}
+
+pricePerCategory();
