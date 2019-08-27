@@ -11,7 +11,7 @@ const shoppingList = {
     return db
       .select("*")
       .from("shopping_list")
-      .finally(() => db.destroy());
+      // .finally(() => db.destroy());
   },
 
   insertItems(db, newItem) {
@@ -19,7 +19,7 @@ const shoppingList = {
       .into("shopping_list")
       .insert(newItem)
       .returning("*")
-      .finally(() => db.destroy());
+      // .finally(() => db.destroy());
   },
 
   updateItem(db, id, newInfo) {
@@ -27,14 +27,14 @@ const shoppingList = {
       .where({ id })
       .update(newInfo)
       .returning("*")
-      .finally(() => db.destroy());
+      // .finally(() => db.destroy());
   },
 
   deleteItem(db, id) {
     return db("shopping_list")
       .where({ id })
       .delete()
-      .finally(() => db.destroy());
+      // .finally(() => db.destroy());
   }
 };
 
